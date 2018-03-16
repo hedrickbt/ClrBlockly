@@ -1080,7 +1080,7 @@ Blockly.Python['buttonpressed'] = function (block) {
 Blockly.Python['digitalwrite'] = function (block) {
   var pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_ATOMIC); 
   var onOff = block.getFieldValue ("VALUE");
-  var code = "digitalWrite (" + pin + "," + onOff + ")\n";   
+  var code = "digitalWrite (" + pin + "," + onOff + ");\n";   // bth 3.15.2018 added missing semicolon
   inSetupCode  ('  pinMode(' + pin + ',OUTPUT);');    
   return code;
 };
