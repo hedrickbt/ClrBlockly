@@ -1,3 +1,16 @@
+# ClrBlockly
+
+Clive Lego Robotics version of Blockly.
+
+**The project page is https://sites.google.com/site/clivelegorobotics/blockly**
+**The Github location is https://github.com/hedrickbt/ClrBlockly/**
+
+Using this requires the Arduino IDE with the https://sites.google.com/site/clivelegorobotics/robotics-library installed.
+
+To add the library, you can use Sketch | Include Library | Add .ZIP Library... and then choose the location where you downloaded RoboticsLibrary.zip.
+
+
+# The original project 
 # Blockly
 
 Google's Blockly is a web-based, visual programming editor.  Users can drag
