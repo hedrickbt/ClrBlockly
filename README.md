@@ -9,6 +9,12 @@ Using this requires the Arduino IDE with the https://sites.google.com/site/clive
 
 To add the library, you can use Sketch | Include Library | Add .ZIP Library... and then choose the location where you downloaded RoboticsLibrary.zip.
 
+The RoboticsLibrary does currently support:
+** Arduino Nano **
+
+It does not support
+** Arduino Micro **
+
 
 # The original project 
 # Blockly
