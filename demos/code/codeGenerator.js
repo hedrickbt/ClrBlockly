@@ -371,6 +371,13 @@ Blockly.Python['makesound'] = function(block) {
   return code;
 };
 
+Blockly.Python['stopsound'] = function(block) {
+    var pin   = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var name = 'piezo' + pin;
+    var code = name + '.stop();\n';
+    return code;
+};
+
 Blockly.Python['charpressed'] = function(block) {
   var name = 'chReader';
   var code = name + '.read()';
