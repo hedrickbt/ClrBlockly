@@ -1099,3 +1099,64 @@ Blockly.Python['digitalread'] = function (block) {
   return ["digitalRead(" + pin + ")", Blockly.Python.ORDER_NONE]; 
 };
 
+/*
+Shift Register 74hc595 tested
+ */
+
+Blockly.Python['ShiftRegSetup'] = function (block) {
+    var srNumRegisters = Blockly.Python.valueToCode(block, 'SrNumRegisters', Blockly.Python.ORDER_ATOMIC);
+    var srDataPin = Blockly.Python.valueToCode(block, 'SrDataPin', Blockly.Python.ORDER_ATOMIC);
+    var srClockPin = Blockly.Python.valueToCode(block, 'SrClockPin', Blockly.Python.ORDER_ATOMIC);
+    var srLatchPin = Blockly.Python.valueToCode(block, 'SrLatchPin', Blockly.Python.ORDER_ATOMIC);
+
+    includeClass ('#include <ShiftRegister74HC595.h>' );
+    instantiateVariable ( 'ShiftRegister74HC595 shiftRegister(' + srNumRegisters + ', ' + srDataPin + ', ' + srClockPin + ', ' + srLatchPin + ');' );
+    instantiateVariable ( 'uint8_t registerValues[' + srNumRegisters + '];' );
+
+    var code = "";
+    return code;
+};
+
+Blockly.Python['ShiftRegSet'] = function (block) {
+    var srRegister = Blockly.Python.valueToCode(block, 'SrRegister', Blockly.Python.ORDER_ATOMIC);
+    var value = block.getFieldValue ("VALUE");
+    var code = 'shiftRegister.set(' + srRegister + ', ' + value + ');\n';
+    return code;
+};
+
+Blockly.Python['ShiftRegGet'] = function (block) {
+    var srRegister = Blockly.Python.valueToCode(block, 'SrRegister', Blockly.Python.ORDER_ATOMIC);
+    return ['shiftRegister.get(' + srRegister + ')', Blockly.Python.ORDER_NONE];
+};
+
+Blockly.Python['ShiftRegSetAll'] = function (block) {
+    var srValue = Blockly.Python.valueToCode(block, 'SrValue', Blockly.Python.ORDER_ATOMIC);
+    var code = 'registerValues[0] = { ' + srValue + ' };\nshiftRegister.setAll(registerValues);\n';
+    return code;
+};
+
+Blockly.Python['ShiftRegSetAllLow'] = function (block) {
+    var code = 'shiftRegister.setAllLow();\n';
+    return code;
+};
+
+Blockly.Python['ShiftRegSetAllHigh'] = function (block) {
+    var code = 'shiftRegister.setAllHigh();\n';
+    return code;
+};
+
+Blockly.Python['ShiftRegGetAll'] = function (block) {
+    return ['shiftRegister.getAll()', Blockly.Python.ORDER_NONE];
+};
+
+Blockly.Python['ShiftRegSetNoUpdate'] = function (block) {
+    var srRegister = Blockly.Python.valueToCode(block, 'SrRegister', Blockly.Python.ORDER_ATOMIC);
+    var value = block.getFieldValue ("VALUE");
+    var code = 'shiftRegister.setNoUpdate(' + srRegister + ', ' + value + ');\n';
+    return code;
+};
+
+Blockly.Python['ShiftRegUpdateRegisters'] = function (block) {
+    var code = 'shiftRegister.updateRegisters();\n';
+    return code;
+};

@@ -1140,7 +1140,7 @@ Blockly.Blocks['digitalread'] = {
 };
 
 /*
-Shift Register
+Shift Register 74hc595 tested
  */
 
 Blockly.Blocks['ShiftRegSetup'] = {
@@ -1149,7 +1149,7 @@ Blockly.Blocks['ShiftRegSetup'] = {
             .appendField("Shift Register Setup");
         this.appendValueInput("SrNumRegisters")
             .setCheck("Number")
-            .appendField("Number of registers (8)");
+            .appendField("Number of registers (1)");
         this.appendValueInput("SrDataPin")
             .setCheck("Number")
             .appendField("Data Pin (11)");
@@ -1205,9 +1205,9 @@ Blockly.Blocks['ShiftRegSetAll'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("Shift Register set all");
-        this.appendDummyInput()
-            .appendField("to")
-            .appendField(new Blockly.FieldDropdown([["1", "1"], ["0", "0"]]), "VALUE");
+        this.appendValueInput("SrValue")
+            .setCheck("Number")
+            .appendField("value");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(120);
