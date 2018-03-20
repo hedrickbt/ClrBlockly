@@ -54,10 +54,10 @@
 
   </script>
   <script src="/storage.js"></script>
-  <script src="../../blockly_compressed.js"></script>
+  <script src="../../blockly_uncompressed.js"></script>
   <script src="../../blocks_compressed.js"></script>
   <script src="../../javascript_compressed.js"></script>
-  <script src="../../python_compressed.js"></script>
+  <script src="../../python_uncompressed.js"></script>
   <script src="../../php_compressed.js"></script>
   <script src="../../lua_compressed.js"></script>
   <script src="../../dart_compressed.js"></script>
@@ -220,7 +220,18 @@
   <category name="Piezo">
     <block type="makesound"></block>
     <block type="stopsound"></block>
-  </category>  
+  </category>
+  <category name="Shift Register">
+    <block type="ShiftRegSetup"></block>
+    <block type="ShiftRegSet"></block>
+    <block type="ShiftRegGet"></block>
+    <block type="ShiftRegSetAll"></block>
+    <block type="ShiftRegSetAllLow"></block>
+    <block type="ShiftRegSetAllHigh"></block>
+    <block type="ShiftRegGetAll"></block>
+    <block type="ShiftRegSetNoUpdate"></block>
+    <block type="ShiftRegUpdateRegisters"></block>
+  </category>
   <category name="Timer">
     <block type="starttimer"></block>
     <block type="timerexpired"></block>

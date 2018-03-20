@@ -1139,3 +1139,146 @@ Blockly.Blocks['digitalread'] = {
   }
 };
 
+/*
+Shift Register
+ */
+
+Blockly.Blocks['ShiftRegSetup'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Shift Register Setup");
+        this.appendValueInput("SrNumRegisters")
+            .setCheck("Number")
+            .appendField("Number of registers (8)");
+        this.appendValueInput("SrDataPin")
+            .setCheck("Number")
+            .appendField("Data Pin (11)");
+        this.appendValueInput("SrClockPin")
+            .setCheck("Number")
+            .appendField("Clock Pin (12)");
+        this.appendValueInput("SrLatchPin")
+            .setCheck("Number")
+            .appendField("Latch Pin (8)");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(120);
+        this.setTooltip('');
+        this.setHelpUrl('http://www.example.com/');
+    }
+};
+
+Blockly.Blocks['ShiftRegSet'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Shift Register set value of");
+        this.appendValueInput("SrRegister")
+            .setCheck("Number")
+            .appendField("register (0)");
+        this.appendDummyInput()
+            .appendField("to")
+            .appendField(new Blockly.FieldDropdown([["1", "1"], ["0", "0"]]), "VALUE");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(120);
+        this.setTooltip('');
+        this.setHelpUrl('http://www.example.com/');
+    }
+};
+
+Blockly.Blocks['ShiftRegGet'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Shift Register get value of");
+        this.appendValueInput("SrRegister")
+            .setCheck("Number")
+            .appendField("register (0)");
+        this.setPreviousStatement(false, null);
+        this.setNextStatement(false, null);
+        this.setColour(120);
+        this.setTooltip('');
+        this.setOutput(true, "Number");
+        this.setHelpUrl('http://www.example.com/');
+    }
+};
+
+Blockly.Blocks['ShiftRegSetAll'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Shift Register set all");
+        this.appendDummyInput()
+            .appendField("to")
+            .appendField(new Blockly.FieldDropdown([["1", "1"], ["0", "0"]]), "VALUE");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(120);
+        this.setTooltip('');
+        this.setHelpUrl('http://www.example.com/');
+    }
+};
+
+Blockly.Blocks['ShiftRegSetAllLow'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Shift Register set all LOW");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(120);
+        this.setTooltip('');
+        this.setHelpUrl('http://www.example.com/');
+    }
+};
+
+Blockly.Blocks['ShiftRegSetAllHigh'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Shift Register set all HIGH");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(120);
+        this.setTooltip('');
+        this.setHelpUrl('http://www.example.com/');
+    }
+};
+
+Blockly.Blocks['ShiftRegGetAll'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Shift Register get all");
+        this.setPreviousStatement(false, null);
+        this.setNextStatement(false, null);
+        this.setColour(120);
+        this.setTooltip('');
+        this.setOutput(true, "Number");
+        this.setHelpUrl('http://www.example.com/');
+    }
+};
+
+Blockly.Blocks['ShiftRegSetNoUpdate'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Shift Register set value (without update) of");
+        this.appendValueInput("SrRegister")
+            .setCheck("Number")
+            .appendField("register (0)");
+        this.appendDummyInput()
+            .appendField("to")
+            .appendField(new Blockly.FieldDropdown([["1", "1"], ["0", "0"]]), "VALUE");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(120);
+        this.setTooltip('');
+        this.setHelpUrl('http://www.example.com/');
+    }
+};
+
+Blockly.Blocks['ShiftRegUpdateRegisters'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Shift Register update registers");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(120);
+        this.setTooltip('');
+        this.setHelpUrl('http://www.example.com/');
+    }
+};
