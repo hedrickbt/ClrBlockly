@@ -1,0 +1,197 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block id="(D^pD#(NhE|dKw~bv8H$" type="setuploop" x="138" y="38">
+    <field name="BAUDRATE">9600</field>
+    <statement name="SETUPCODE">
+      <block id="gk@!Iu0!Be$?ftb6N6xN" type="ps2init">
+        <value name="PIN">
+          <block id="-leSvIBk0{6pdF.V,V:H" type="math_number">
+            <field name="NUM">8</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+    <statement name="LOOPCODE">
+      <block id="V]}P1IdAi2.T4F9l4$d/" type="controls_if">
+        <value name="IF0">
+          <block id="oNY+JW$fW@W!P}~#uE?," type="ps2yaction">
+            <field name="LEFTRIGHT">left</field>
+            <field name="FORWARDREVERSE">forward</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block id="Uga!vUYvEOf[Q`n.qKfc" type="motormove">
+            <field name="DIRECTION">forward</field>
+            <field name="SPEED">fast</field>
+            <field name="PIN1">5</field>
+            <field name="PIN2">6</field>
+          </block>
+        </statement>
+        <next>
+          <block id="8k1v.1%bw)|/jF7=u9Lh" type="controls_if">
+            <value name="IF0">
+              <block id="bjMYysw7H~;{idWM+RIY" type="ps2yaction">
+                <field name="LEFTRIGHT">left</field>
+                <field name="FORWARDREVERSE">reverse</field>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block id="@|SS_[8/F7AJ[k=,)@D," type="motormove">
+                <field name="DIRECTION">reverse</field>
+                <field name="SPEED">medium</field>
+                <field name="PIN1">5</field>
+                <field name="PIN2">6</field>
+              </block>
+            </statement>
+            <next>
+              <block id="RJLxAmaiCXCudexn$]Bb" type="controls_if">
+                <value name="IF0">
+                  <block id="IA~@b90P=azq~~e/1?Nd" type="ps2yaction">
+                    <field name="LEFTRIGHT">left</field>
+                    <field name="FORWARDREVERSE">stop</field>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block id=".SHC.u_A8L/J%1VW~J3x" type="motormove">
+                    <field name="DIRECTION">forward</field>
+                    <field name="SPEED">stop</field>
+                    <field name="PIN1">5</field>
+                    <field name="PIN2">6</field>
+                  </block>
+                </statement>
+                <next>
+                  <block id="%W@!7s,ppRd(Q]e!]xUo" type="controls_if">
+                    <value name="IF0">
+                      <block id="`+yL~f^y=fQq2ABhDuPC" type="ps2yaction">
+                        <field name="LEFTRIGHT">right</field>
+                        <field name="FORWARDREVERSE">forward</field>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block id="3}$_/`O)3pShMy()@l7^" type="motormove">
+                        <field name="DIRECTION">forward</field>
+                        <field name="SPEED">fast</field>
+                        <field name="PIN1">9</field>
+                        <field name="PIN2">10</field>
+                      </block>
+                    </statement>
+                    <next>
+                      <block id="UDGZ-R.gZ{T|t9CPv.rn" type="controls_if">
+                        <value name="IF0">
+                          <block id="jT[t$i}.;|IaZBU(JP;$" type="ps2yaction">
+                            <field name="LEFTRIGHT">right</field>
+                            <field name="FORWARDREVERSE">reverse</field>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block id="b,,s-7052WcS*#dki0)9" type="motormove">
+                            <field name="DIRECTION">reverse</field>
+                            <field name="SPEED">medium</field>
+                            <field name="PIN1">9</field>
+                            <field name="PIN2">10</field>
+                          </block>
+                        </statement>
+                        <next>
+                          <block id="2Be`7D.{?StO$zyu`u,Z" type="controls_if">
+                            <value name="IF0">
+                              <block id="QoCD7H:Ejpc{TgSQNdwP" type="ps2yaction">
+                                <field name="LEFTRIGHT">right</field>
+                                <field name="FORWARDREVERSE">stop</field>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block id="Ym+CTnh+;(BNSyyNX~~`" type="motormove">
+                                <field name="DIRECTION">forward</field>
+                                <field name="SPEED">stop</field>
+                                <field name="PIN1">9</field>
+                                <field name="PIN2">10</field>
+                              </block>
+                            </statement>
+                            <next>
+                              <block id="zZ6Hi,pqsIhJq51Uh!E-" type="controls_if">
+                                <mutation elseif="1" />
+                                <value name="IF0">
+                                  <block id=");.D5l)_*(}3Oy+@D5^r" type="buttonpressed">
+                                    <field name="BUTTON">square</field>
+                                    <field name="PRESSEDRELEASED">pressed</field>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block id="y9Q#{,i0VJnm}c[`]%pJ" type="text_print">
+                                    <value name="TEXT">
+                                      <shadow id="$%K/@d7b!ukOxFQ!7?@F" type="text">
+                                        <field name="TEXT">Square Button Pressed</field>
+                                      </shadow>
+                                    </value>
+                                    <next>
+                                      <block id="_uZ/BiQMp,n;[t#;{;40" type="digitalwrite">
+                                        <field name="VALUE">1</field>
+                                        <value name="PIN">
+                                          <block id="Dhj]uL|6FIU1ML@}D=]R" type="math_number">
+                                            <field name="NUM">4</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block id="B$+BXDKeGw)=gm8mwmn4" type="digitalwrite">
+                                            <field name="VALUE">0</field>
+                                            <value name="PIN">
+                                              <block id="!A}3(xFoVY^=@us!cs#_" type="math_number">
+                                                <field name="NUM">3</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                                <value name="IF1">
+                                  <block id="jhT[:nF]:#L{0D!QyK@O" type="buttonpressed">
+                                    <field name="BUTTON">square</field>
+                                    <field name="PRESSEDRELEASED">released</field>
+                                  </block>
+                                </value>
+                                <statement name="DO1">
+                                  <block id="NY^BbF;(y!La{C~{ED5x" type="text_print">
+                                    <value name="TEXT">
+                                      <shadow id="94FlPjXVvfu:(*t-e^@u" type="text">
+                                        <field name="TEXT">Square Button Released</field>
+                                      </shadow>
+                                    </value>
+                                    <next>
+                                      <block id="]~L%#w7qy/+{r1NIN9vw" type="digitalwrite">
+                                        <field name="VALUE">0</field>
+                                        <value name="PIN">
+                                          <block id="}ul}.GZC%2x-?t_0D/zy" type="math_number">
+                                            <field name="NUM">4</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block id="t0UDFw#;Ij~l[J%@,[gY" type="digitalwrite">
+                                            <field name="VALUE">0</field>
+                                            <value name="PIN">
+                                              <block id="^H6u.1Q+NavaxOwj~(By" type="math_number">
+                                                <field name="NUM">3</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
