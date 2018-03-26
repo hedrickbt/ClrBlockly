@@ -825,7 +825,7 @@ Blockly.Arduino['rf433tx'] = function (block) {
   
   var pin = Blockly.Arduino.valueToCode(block, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
   var msg = Blockly.Arduino.valueToCode(block, 'MESSAGE', Blockly.Arduino.ORDER_ATOMIC);  
-  includeClass ('#include <VirtualWire.h&gt' );  
+  includeClass ('#include &ltVirtualWire.h&gt' );
   inSetupCode  ('  vw_set_tx_pin (' + pin + ');');
   inSetupCode  ('  vw_setup(2000);' ); 
   msg = insideChars (msg, "\"", "\"");
@@ -840,7 +840,7 @@ Blockly.Arduino['rf433rxready'] = function (block) {
   inSetupCode  ('  vw_set_rx_pin (' + pin + ');');
   inSetupCode  ('  vw_setup(2000);' ); 
   inSetupCode  ('  vw_rx_start(); // Start the receiver PLL running\n' );
-  includeClass ('#include <VirtualWire.h&gt' );  
+  includeClass ('#include &ltVirtualWire.h&gt' );
       
   return ['vw_have_message()', Blockly.Arduino.ORDER_NONE];
 };
@@ -852,7 +852,7 @@ Blockly.Arduino['rf433rx'] = function (block) {
   inSetupCode  ('  vw_set_rx_pin (' + pin + ');');
   inSetupCode  ('  vw_setup(2000);' ); 
   inSetupCode  ('  vw_rx_start(); // Start the receiver PLL running\n' );
-  includeClass ('#include <VirtualWire.h&gt' );  
+  includeClass ('#include &ltVirtualWire.h&gt' );
   
   setupTheCode (  
     'uint8_t buf[100];\n' + 
@@ -871,7 +871,7 @@ Blockly.Arduino['rf433rx'] = function (block) {
 Blockly.Arduino['textstream'] = function (block) {
   var pin = Blockly.Arduino.valueToCode(block, 'PIN', Blockly.Arduino.ORDER_ATOMIC); 
   var name = "textStream" + pin;  
-  includeClass ('#include <TextStream.h&gt' );
+  includeClass ('#include &ltTextStream.h&gt' );
   instantiateVariable ( 'SoftwareSerial tmp' + name + '(' + pin + ',20);' );
   instantiateVariable ( 'TextStream ' + name + ' (&tmp' + name + ');' );
 
@@ -883,7 +883,7 @@ Blockly.Arduino['textstream'] = function (block) {
 Blockly.Arduino['textstreamready'] = function (block) {
   var pin = Blockly.Arduino.valueToCode(block, 'PIN', Blockly.Arduino.ORDER_ATOMIC); 
   var name = "textStream" + pin;  
-  includeClass ('#include <TextStream.h&gt' );
+  includeClass ('#include &ltTextStream.h&gt' );
   instantiateVariable ( 'SoftwareSerial tmp' + name + '(' + pin + ',20);' );
   instantiateVariable ( 'TextStream ' + name + ' (&tmp' + name + ');' ); 
   var code  = name + ".ready()";   
@@ -897,9 +897,9 @@ Blockly.Arduino['nrf24l01setup'] = function (block) {
   var channel = Blockly.Arduino.valueToCode(block, 'CHANNEL', Blockly.Arduino.ORDER_ATOMIC); 
   var paLevel = block.getFieldValue('PALevel');   
   var mode = block.getFieldValue ('Mode' );
-  includeClass ('#include <SPI.h&gt' );
-  includeClass ('#include <nRF24L01.h&gt' );
-  includeClass ('#include <RF24.h&gt' );    
+  includeClass ('#include &ltSPI.h&gt' );
+  includeClass ('#include &ltnRF24L01.h&gt' );
+  includeClass ('#include &ltRF24.h&gt' );
   instantiateVariable ( 'RF24 nrf24l01(' + ce + ', ' + csn + ');' );
   instantiateVariable ( 'const byte thisSlaveAddress[5] = {\'R\', \'x\', \'A\', \'A\', \'A\'};' );
   
@@ -919,9 +919,9 @@ Blockly.Arduino['nrf24l01setup'] = function (block) {
 };
 
 Blockly.Arduino['nrf24l01available'] = function (block) {
-  includeClass ('#include <SPI.h&gt' );
-  includeClass ('#include <nRF24L01.h&gt' );
-  includeClass ('#include <RF24.h&gt' );    
+  includeClass ('#include &ltSPI.h&gt' );
+  includeClass ('#include &ltnRF24L01.h&gt' );
+  includeClass ('#include &ltRF24.h&gt' );
   instantiateVariable ( 'const byte thisSlaveAddress[5] = {\'R\', \'x\', \'A\', \'A\', \'A\'};' );
   return ["nrf24l01.available()", Blockly.Arduino.ORDER_NONE];
 };
@@ -944,9 +944,9 @@ Blockly.Arduino['joystickbutton'] = function (block) {
      code = "joystick.newZ == \"PRESSED\"";
   } 
   
-  includeClass ('#include <Joystick.h&gt' );
-  //includeClass ('#include <nRF24L01.h&gt' );
-  //includeClass ('#include <RF24.h&gt' );    
+  includeClass ('#include &ltJoystick.h&gt' );
+  //includeClass ('#include &ltnRF24L01.h&gt' );
+  //includeClass ('#include &ltRF24.h&gt' );
   instantiateVariable ( 'Joystick joystick (A0,A1,5);' );
   return [code, Blockly.Arduino.ORDER_NONE];
 };
@@ -956,7 +956,7 @@ Blockly.Arduino['pixelsetup'] = function (block) {
   var numPixels = Blockly.Arduino.valueToCode(block, 'NUMPIXELS', Blockly.Arduino.ORDER_ATOMIC); 
   var code = "";
     
-  includeClass ('#include <Pixel.h&gt' );
+  includeClass ('#include &ltPixel.h&gt' );
   instantiateVariable ( 'Pixel pixels = Pixel (' + pin + ', ' + numPixels + ', 200);' );
   updateVariable ('pixels.update();' );
   return code;
@@ -1001,7 +1001,7 @@ Blockly.Arduino['pixelplus'] = function (block) {
 Blockly.Arduino['ps2init'] = function (block) {
   var pin = Blockly.Arduino.valueToCode(block, 'PIN', Blockly.Arduino.ORDER_ATOMIC); 
   var code = "";    
-  includeClass ('#include <Ps2Wireless.h&gt' ); 
+  includeClass ('#include &ltPs2Wireless.h&gt' );
   inSetupCode  ('  ps2Wireless.init(' + pin + ');');    
   instantiateVariable ( 'Ps2Wireless ps2Wireless = Ps2Wireless(false);' );
   updateVariable ('ps2Wireless.update();' );
