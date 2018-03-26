@@ -1,1 +1,12 @@
+node_modules
+npm-debug.log
+.DS_Store
+.settings
+.project
+*.pyc
+*.komodoproject
+/nbproject/private/
 .idea
+
+tests/compile/main_compressed.js
+tests/compile/*compiler*.jar
