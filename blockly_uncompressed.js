@@ -14267,6 +14267,15 @@ Blockly.Variables.flyoutCategory = function(a) {
         Blockly.Variables.createVariableButtonHandler(a.getTargetWorkspace())
     });
     b.push(c);
+
+    var d = goog.dom.createDom("button");
+    d.setAttribute("text", "Create variable panda...");
+    d.setAttribute("callbackKey", "CREATE_VARIABLE_PANDA");
+    a.registerButtonCallback("CREATE_VARIABLE_PANDA", function(a) {
+        Blockly.Variables.createVariableButtonHandler(a.getTargetWorkspace(), null, 'panda')
+    });
+    b.push(d);
+
     a = Blockly.Variables.flyoutCategoryBlocks(a);
     return b = b.concat(a)
 };
