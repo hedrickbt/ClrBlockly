@@ -40,10 +40,10 @@ Blockly.Arduino.init = function(a) {
     Blockly.Arduino.functionNames_ = Object.create(null);
     Blockly.Arduino.variableDB_ ? Blockly.Arduino.variableDB_.reset() : Blockly.Arduino.variableDB_ = new Blockly.Names(Blockly.Arduino.RESERVED_WORDS_);
     Blockly.Arduino.variableDB_.setVariableMap(a.getVariableMap());
-    for (var b = [], c = Blockly.Variables.allDeveloperVariables(a), d = 0; d < c.length; d++) b.push(Blockly.Arduino.variableDB_.getName(c[d], Blockly.Names.DEVELOPER_VARIABLE_TYPE) +
-        " = None");
+    for (var b = [], c = Blockly.Variables.allDeveloperVariables(a), d = 0; d < c.length; d++) b.push('int ' + Blockly.Arduino.variableDB_.getName(c[d], Blockly.Names.DEVELOPER_VARIABLE_TYPE) +
+        " = 0;");
     a = Blockly.Variables.allUsedVarModels(a);
-    for (d = 0; d < a.length; d++) b.push(Blockly.Arduino.variableDB_.getName(a[d].getId(), Blockly.Variables.NAME_TYPE) + " = None");
+    for (d = 0; d < a.length; d++) b.push('int ' + Blockly.Arduino.variableDB_.getName(a[d].getId(), Blockly.Variables.NAME_TYPE) + " = 0;");
     Blockly.Arduino.definitions_.variables = b.join("\n")
 };
 Blockly.Arduino.finish = function(a) {
@@ -526,10 +526,11 @@ Blockly.Arduino.math_number_property = function(a) {
     return [d, Blockly.Arduino.ORDER_RELATIONAL]
 };
 Blockly.Arduino.math_change = function(a) {
-    Blockly.Arduino.definitions_.from_numbers_import_Number = "from numbers import Number";
+    // Blockly.Arduino.definitions_.from_numbers_import_Number = "from numbers import Number";
     var b = Blockly.Arduino.valueToCode(a, "DELTA", Blockly.Arduino.ORDER_ADDITIVE) || "0";
     a = Blockly.Arduino.variableDB_.getName(a.getFieldValue("VAR"), Blockly.Variables.NAME_TYPE);
-    return a + " = (" + a + " if isinstance(" + a + ", Number) else 0) + " + b + "\n"
+    // return a + " = (" + a + " if isinstance(" + a + ", Number) else 0) + " + b + "\n"
+    return a + " = " + a + " + " + b + ";\n";
 };
 Blockly.Arduino.math_round = Blockly.Arduino.math_single;
 Blockly.Arduino.math_trig = Blockly.Arduino.math_single;
@@ -547,14 +548,14 @@ Blockly.Arduino.math_on_list = function(a) {
             b = "max(" + a + ")";
             break;
         case "AVERAGE":
-            Blockly.Arduino.definitions_.from_numbers_import_Number = "from numbers import Number";
+            // Blockly.Arduino.definitions_.from_numbers_import_Number = "from numbers import Number";
             b = Blockly.Arduino.provideFunction_("math_mean", ["def " + Blockly.Arduino.FUNCTION_NAME_PLACEHOLDER_ + "(myList):", "  localList = [e for e in myList if isinstance(e, Number)]",
                 "  if not localList: return", "  return float(sum(localList)) / len(localList)"
             ]);
             b = b + "(" + a + ")";
             break;
         case "MEDIAN":
-            Blockly.Arduino.definitions_.from_numbers_import_Number = "from numbers import Number";
+            // Blockly.Arduino.definitions_.from_numbers_import_Number = "from numbers import Number";
             b = Blockly.Arduino.provideFunction_("math_median", ["def " + Blockly.Arduino.FUNCTION_NAME_PLACEHOLDER_ + "(myList):", "  localList = sorted([e for e in myList if isinstance(e, Number)])", "  if not localList: return", "  if len(localList) % 2 == 0:", "    return (localList[len(localList) // 2 - 1] + localList[len(localList) // 2]) / 2.0",
                 "  else:", "    return localList[(len(localList) - 1) // 2]"
             ]);
