@@ -953,11 +953,19 @@ Blockly.Arduino['joystickbutton'] = function (block) {
 
 Blockly.Arduino['pixelsetup'] = function (block) {
   var pin = Blockly.Arduino.valueToCode(block, 'PIN', Blockly.Arduino.ORDER_ATOMIC); 
-  var numPixels = Blockly.Arduino.valueToCode(block, 'NUMPIXELS', Blockly.Arduino.ORDER_ATOMIC); 
+  var numPixels = Blockly.Arduino.valueToCode(block, 'NUMPIXELS', Blockly.Arduino.ORDER_ATOMIC);
+  var colorOrder = block.getFieldValue ("COLORORDER");
   var code = "";
-    
   includeClass ('#include &ltPixel.h&gt' );
-  instantiateVariable ( 'Pixel pixels = Pixel (' + pin + ', ' + numPixels + ', 200);' );
+
+  if (colorOrder == 'rgb') {
+    instantiateVariable ( 'Pixel pixels = Pixel (' + pin + ', ' + numPixels + ', 200, NEO_RGB);' );
+  } else if (colorOrder == 'grb') {
+    instantiateVariable ( 'Pixel pixels = Pixel (' + pin + ', ' + numPixels + ', 200, NEO_GRB);' );
+  } else {
+    instantiateVariable ( 'Pixel pixels = Pixel (' + pin + ', ' + numPixels + ', 200);' );
+  }
+
   updateVariable ('pixels.update();' );
   return code;
 };

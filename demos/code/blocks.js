@@ -963,7 +963,12 @@ Blockly.Blocks['pixelsetup'] = {
         .appendField("Number of Pixels");        
     this.appendValueInput("PIN")
         .setCheck("Number")
-        .appendField("Data Pin");        
+        .appendField("Data Pin");
+    this.appendDummyInput()
+        .appendField("Select Color Order")
+        .appendField(new Blockly.FieldDropdown(
+            [["Green, Red, Blue (GRB)", "grb"], ["Red, Green, Blue (RGB)", "rgb"]]
+        ), "COLORORDER");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(120);
